@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "shop.vat",
+      "type": "java.lang.Integer",
+      "description": "Inteeger 0-100 if u have 20% vat it will be 20 etc"
+    },
+    {
+      "name": "shop.discount",
+      "type": "java.lang.Integer",
+      "description": "Inteeger 0-100 in %"
+    }
+  ] }
