@@ -1,8 +1,11 @@
 package dev.norka.homework;
 
+import dev.norka.homework.controller.CarApi;
 import dev.norka.homework.model.Car;
+import dev.norka.homework.service.CarService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.ResponseEntity;
 
@@ -18,14 +21,14 @@ class CarApiTest {
     Car car1, car2;
     private CarApi carApi;
 
-    @BeforeEach
-    void setUp() {
-        car1 = new Car(1, "Honda", "Civic", "red");
-        car2 = new Car(2, "Toyota", "Yaris", "green");
-        carApi = new CarApi();
-        carApi.addNewCar(car1);
-        carApi.addNewCar(car2);
+    private final CarService carService;
+
+    @Autowired
+    CarApiTest(CarService carService) {
+        this.carService = carService;
+        carApi = new CarApi(carService);
     }
+
 
     @Test
     void getAllCars() {
